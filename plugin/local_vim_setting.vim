@@ -9,16 +9,11 @@ let g:local_vim_setting#filename = get( g:, "local_vim_setting#filename", ".lvim
 
 function! local_vim_setting#load_setting_file()
     let load_file = local_vim_setting#get_setting_file()
-    echo 'aaaa'
-    echo load_file 
     call local_vim_setting#load( load_file )
 endfunction
 
 function! local_vim_setting#get_setting_file()
     let load_file = local_vim_setting#get_git_repository_root() . '/' . g:local_vim_setting#filename
-
-    echo local_vim_setting#get_git_repository_root()
-    echo g:local_vim_setting#filename
     return load_file
 endfunction
 
@@ -26,3 +21,4 @@ command! LoadLvimrc call local_vim_setting#load_setting_file()
 command! LocalVimrcShow echo local_vim_setting#get_setting_file()
 
 call local_vim_setting#load_setting_file()
+

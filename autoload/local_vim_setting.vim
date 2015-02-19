@@ -4,18 +4,16 @@ scriptencoding utf-8
 function! local_vim_setting#get_git_repository_root()
     let root = system( 'git rev-parse --show-toplevel' )
 
-    echo 'aaaa'
     if v:shell_error == 0
         return substitute( root, "\n", "", "g" )
     endif
 
-    echo 'aaaa'
-    return system( 'pwd' )
+    let working_dir = system( 'pwd' )
+    return substitute( working_dir, "\n", "", "g" )
 endfunction
 
 function! local_vim_setting#load( filename )
     if filereadable( a:filename )
-        echo 'source ' . a:filename
         exe 'source ' . a:filename
     endif
 endfunction
